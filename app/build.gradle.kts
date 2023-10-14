@@ -7,6 +7,7 @@ val slackVersion: String by project
 
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.9.10"
+    id("io.ktor.plugin") version "2.3.5"
     id("org.jmailen.kotlinter") version "4.0.0"
     id("io.gitlab.arturbosch.detekt").version("1.23.1")
     application
@@ -17,9 +18,10 @@ repositories {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-server-core:$ktorVersion")
-    implementation("io.ktor:ktor-gson:$ktorVersion")
-    implementation("io.ktor:ktor-server-netty:$ktorVersion")
+    implementation("io.ktor:ktor-server-core-jvm")
+    implementation("io.ktor:ktor-server-content-negotiation-jvm")
+    implementation("io.ktor:ktor-serialization-gson-jvm")
+    implementation("io.ktor:ktor-server-netty-jvm")
 
     implementation("ch.qos.logback:logback-classic:$logbackVersion")
 
@@ -27,7 +29,7 @@ dependencies {
     implementation("com.slack.api:slack-api-model-kotlin-extension:$slackVersion")
     implementation("com.slack.api:slack-api-client-kotlin-extension:$slackVersion")
 
-    testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
+    testImplementation("io.ktor:ktor-server-tests-jvm")
 }
 
 java {
@@ -37,7 +39,7 @@ java {
 }
 
 application {
-    mainClass.set("io.github.gabrielshanahan.AppKt")
+    mainClass.set("io.github.gabrielshanahan.ApplicationKt")
 }
 
 tasks.named<Test>("test") {
