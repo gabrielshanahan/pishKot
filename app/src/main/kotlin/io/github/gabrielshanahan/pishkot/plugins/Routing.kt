@@ -1,4 +1,4 @@
-package io.github.gabrielshanahan.plugins
+package io.github.gabrielshanahan.pishkot.plugins
 
 import com.slack.api.Slack
 import io.ktor.server.application.*

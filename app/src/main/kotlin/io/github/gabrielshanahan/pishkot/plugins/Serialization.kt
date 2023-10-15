@@ -1,4 +1,4 @@
-package io.github.gabrielshanahan.plugins
+package io.github.gabrielshanahan.pishkot.plugins
 
 import io.ktor.serialization.gson.*
 import io.ktor.server.application.*
