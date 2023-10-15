@@ -17,14 +17,16 @@ fun Application.configureRouting() {
 
             val sandboxChannel = conversationListResponse.channels.find { it.name == "sandbox" }!!
 
-            val response1 = methodsAsync.conversationsJoin {
-                it.channel(sandboxChannel.id)
-            }.await()
+            val response1 =
+                methodsAsync.conversationsJoin {
+                    it.channel(sandboxChannel.id)
+                }.await()
 
-            val response = methodsAsync.chatPostMessage {
-                it.channel(sandboxChannel.id)
-                    .text("Hello Kotlin! :wave:")
-            }.await()
+            val response =
+                methodsAsync.chatPostMessage {
+                    it.channel(sandboxChannel.id)
+                        .text("Hello Kotlin! :wave:")
+                }.await()
 
             call.respondText("Responses are: ${listOf(response1, response)}")
         }
